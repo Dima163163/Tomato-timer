@@ -9,18 +9,18 @@ export class AddClass {
     this.#count = count;
   }
 
-  set changeName(name) {
+  set className(name) {
     this.#name = name;
   }
 
-  get changeName() {
+  get className() {
     return this.#name;
   }
 
   set classCount(number = 1) {
     return this.#count += number;
   }
-  
+
   get classCount() {
     return this.#count;
   }
