@@ -8,6 +8,7 @@ const addClass = () => {
   const sosoClass = new AddClass('so-so');
 
   const imp = [defaultClass, importantClass, sosoClass];
+  console.log('imp: ', imp);
 
   document.querySelector('.button-importance').addEventListener('click', ({target}) => {
     count += 1;
