@@ -1,6 +1,14 @@
+import {AddClass} from "./addClass";
+
+
 const addClass = () => {
   let count = 0;
-  const imp = ['default', 'important', 'so-so']
+  const defaultClass = new AddClass('default');
+  const importantClass = new AddClass('important');
+  const sosoClass = new AddClass('so-so');
+
+  const imp = [defaultClass, importantClass, sosoClass];
+
   document.querySelector('.button-importance').addEventListener('click', ({target}) => {
     count += 1;
     if (count >= imp.length) {
@@ -8,10 +16,11 @@ const addClass = () => {
     }
 
     for (let i = 0; i < imp.length; i++) {
+      const calss = imp[i].className;
       if (count === i) {
-        target.classList.add(imp[i])
+        target.classList.add(calss)
       } else {
-        target.classList.remove(imp[i])
+        target.classList.remove(calss)
       }
     }
   })

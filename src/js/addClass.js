@@ -17,11 +17,7 @@ export class AddClass {
     return this.#name;
   }
 
-  set classCount(number = 1) {
+  classCount(number = 1) {
     return this.#count += number;
-  }
-
-  get classCount() {
-    return this.#count;
   }
 }

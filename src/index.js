@@ -1,5 +1,5 @@
 import addClass from './js/main';
-import { AddClass } from './js/addClass';
+import {AddClass} from './js/addClass';
 
 import './index.html'
 import './scss/index.scss'
