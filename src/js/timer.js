@@ -2,8 +2,8 @@ export class Timer {
   #timeTask;
   #timePause;
   #timeBigPause;
-  #tasks
-  #activeTask
+  #tasks;
+  #activeTask;
 
   constructor({timeTask = 25, timePause = 5, timeBigPause = 15, tasks = []}){
     this.#timeTask = timeTask;
@@ -37,7 +37,7 @@ export class Timer {
     })
   }
 
-  startTimer(time) {
+  startTimer(time, flag = true) {
     let startTime = new Date();
     let stopTime = startTime.setMinutes(startTime.getMinutes() + time);
 
@@ -47,29 +47,28 @@ export class Timer {
 
       let minutes = Math.floor((remain % (1000 * 60 *60)) / (1000 * 60));
       let seconds = Math.floor((remain % (1000 * 60)) / 1000);
-
       minutes = minutes < 10 ? `0${minutes}` : minutes;
       seconds = seconds < 10 ? `0${seconds}` : seconds;
       console.log(`${minutes}:${seconds}`)
-      if(remain < 0) clearInterval(countDown);
+      if (minutes === '00' && seconds === '00') {
+        clearInterval(countDown);
+      }
     }, 1000)
   }
 
   startTask() {
     if (this.#activeTask) {
-      console.log(this.#activeTask.id);
-      const timerTask = this.startTimer(this.#timeTask)
-      if (timerTask === 0) {
-        if (this.#activeTask.counter % 3 === 0) {
+      this.startTimer(this.#timeTask)
+      const time = this.#timeTask * 60 * 1000;
+      setTimeout(() => {
+          if (this.#activeTask.counter % 3 === 0) {
           this.startTimer(this.#timeBigPause);
           this.addCounterTask(this.#activeTask.id);
         } else {
           this.startTimer(this.#timePause);
           this.addCounterTask(this.#activeTask.id);
         }
-        
-      }
-      
+      }, time)
     } else {
       console.log('Ошибка.Активной задачи нет.');
     }

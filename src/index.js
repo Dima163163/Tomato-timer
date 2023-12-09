@@ -15,7 +15,6 @@ init();
 const classNone = new AddClass('container')
 const timer = new Timer({});
 timer.addTask({nameTask: 'убрать стол', id: 3456, counter: 2});
-console.log(timer.getTask());
 timer.activationTask(3456)
 timer.startTask()
 console.log(timer.getTask());
