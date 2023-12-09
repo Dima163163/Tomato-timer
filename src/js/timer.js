@@ -37,7 +37,7 @@ export class Timer {
     })
   }
 
-  startTimer(time, flag = true) {
+  startTimer(time) {
     let startTime = new Date();
     let stopTime = startTime.setMinutes(startTime.getMinutes() + time);
 
