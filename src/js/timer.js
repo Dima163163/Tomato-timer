@@ -5,13 +5,16 @@ export class Timer {
   #tasks;
   #activeTask;
 
-  constructor({timeTask = 25, timePause = 5, timeBigPause = 15, tasks = []}){
+  constructor({timeTask = 1, timePause = 5, timeBigPause = 15, tasks = []}){
+    if(Timer._instance) return Timer._instance;
     this.#timeTask = timeTask;
     this.#timePause = timePause;
     this.#timeBigPause = timeBigPause;
     this.#tasks = tasks;
     this.#activeTask = null;
+    Timer._instance = this;
   }
+
 
   addTask(taskObj) {
     this.#tasks.push(taskObj);
