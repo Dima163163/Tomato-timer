@@ -1,42 +1,37 @@
 export class Task {
-  #id;
-  #text;
-  #count;
-
-  constructor(text) {
-    this.id = Math.floor(Math.random() * 100000);
-    this.text = text;
-    this.#count = 0;
+  constructor(title, count = 0) {
+    this.id = String(Math.floor(Math.random() * 100000));
+    this.title = title;
+    this.count = count;
   }
 
-  set text(str) {
-    this.#text = str;
+  changeCount() {
+    this.count += 1;
+    return this.count;
   }
+
 }
 
 // Важная задача
 export class ImportantTask extends Task {
-  #importance;
-  constructor(text) {
-    super(text);
-    this.#importance = 'important';
+  constructor(title, count = 0,importance = 'important') {
+    super(title, count);
+    this.importance = importance;
   }
 }
 
 // Стандартная задача
 export class StandartTask extends Task {
-  #importance;
-  constructor(text) {
-    super(text);
-    this.#importance = 'default';
+  constructor(title, count = 0,importance = 'default') {
+    super(title, count);
+    this.importance = importance;
   }
 }
 
 // Неважная задача
-export class UnimportantTask extends Task {
-  #importance
-  constructor(text) {
-    super(text);
-    this.#importance = 'so-so';
+export class UnImportantTask extends Task {
+  constructor(title, count = 0, importance = 'so-so') {
+    super(title, count);
+    this.importance = importance;
   }
 }
