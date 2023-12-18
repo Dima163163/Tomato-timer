@@ -73,7 +73,6 @@ export class TomatoTimer {
   // Получение счетчика из localStorage
   getCount() {
     const dataCount = JSON.parse(localStorage.getItem('count'));
-    console.log('dataCount: ', dataCount);
 
     if (!dataCount) {
       return 0;
@@ -95,7 +94,7 @@ export class TomatoTimer {
   getTasks() {
     const data = JSON.parse(localStorage.getItem('tasks')) || [];
     const tasks = data.map(task => Object.assign(new Task(), task));
-    console.log('tasks: ', tasks);
+
     return tasks;
   }
 
@@ -107,14 +106,14 @@ export class TomatoTimer {
   // Редактирование задачи
   editTask(id, title) {
     const task = this.tasks.find(task => task.id === id);
-    console.log('task: ', task);
+
     task.title = title;
   }
 
   // Сохранение задачи в активную
   setActiveTask(id) {
     const task = this.tasks.find(task => task.id === id);
-    console.log('task: ', task);
+
     this.activeTask = task;
     return this.activeTask;
   }

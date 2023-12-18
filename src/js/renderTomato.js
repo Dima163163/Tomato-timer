@@ -174,7 +174,6 @@ export class RenderTomato {
     let count = 0;
     const options = ['default', 'important', 'so-so'];
     this.importanceBtn.addEventListener('click', ({target}) => {
-      console.log(target)
       count += 1;
       if (count >= options.length) {
         count = 0;
@@ -262,24 +261,22 @@ export class RenderTomato {
 
       if (deleteBtn) {
         const task = target.closest('.pomodoro-tasks__list-task');
-        console.log('task: ', task);
+
         const modal = this.renderModal();
-        console.log('modal: ', modal);
-        const popup = target.closest('.burger-popup')
-        console.log(popup);
+
+        const popup = target.closest('.burger-popup');
+
         if (popup){
           popup.classList.remove('burger-popup_active')
         }
         modal.addEventListener('click', ({target}) => {
-          console.log('click');
-                
           if (target.closest('.modal-delete__delete-button')) {
 
             this.controller.removeLocalStorage(task.id);
             task.remove();
 
             const activTaskId = this.tomato.activeTask?.id;
-            console.log('activTaskId: ', activTaskId);
+
             if (task.id === activTaskId) {
               this.tomato.isActive = !this.tomato.isActive;
               this.tomato.resetTimer();
@@ -299,16 +296,14 @@ export class RenderTomato {
       const editBtn = target.closest('.burger-popup__edit-button');
       if (editBtn) {
         const task = target.closest('.pomodoro-tasks__list-task');
-        console.log('task: ', task);
+
         const taskText = task.querySelector('.pomodoro-tasks__task-text');
-        console.log('taskText: ', taskText);
 
         taskText.setAttribute('contenteditable', 'true');
         taskText.tabIndex = 0;
         taskText.focus();
 
         const popup = target.closest('.burger-popup')
-        console.log(popup);
         if (popup){
           popup.classList.remove('burger-popup_active')
         }
@@ -342,7 +337,6 @@ export class RenderTomato {
 
       if (taskText) {
         const taskActive = this.taskList.querySelector('.pomodoro-tasks__task-text_active');
-        console.log('taskActive: ', taskActive);
 
         if (taskActive) {
           taskActive.classList.remove('pomodoro-tasks__task-text_active');
@@ -352,7 +346,6 @@ export class RenderTomato {
 
         const id = target.closest('.pomodoro-tasks__list-task').id;
         const newTaskActive = this.tomato.setActiveTask(id);
-        console.log('newTaskActive: ', newTaskActive);
         this.renderActiveTask(newTaskActive);
       }
     });
